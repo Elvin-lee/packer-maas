@@ -175,7 +175,11 @@ Path to Microsoft Windows VHDX image used to build the image.
 Specify the Microsoft Windows Version. Example inputs include: 2025, 2022, 2019, 2016, 10
 and 11.
 
-个人经验:
+### 个人经验:将dd.gz转换成.dd.tgz（适用maas）
+```shell
+gunzip -c windows.dd.gz >  windows.dd
+tar -czf windows.dd.tgz windows.dd
+```
 
 ## Uploading images to MAAS
 
@@ -186,10 +190,10 @@ maas login admin http:/maas-ip:5240/MAAS/api/2.0/
 Use MAAS CLI to upload the image:
 
 ```shell
-maas yourprofile boot-resources create
-name='windows/windows-server'
-title='Windows Server 2016'
-architecture='amd64/generic'
-filetype='ddtgz'
-content@=2016.dd.tar.gz
+maas admin boot-resources create \
+    name='windows/windows10pro(镜像名)' \
+    title=' windows10pro'   \
+    architecture='amd64/generic' \
+    filetype='tgz' \
+    content@=windows-xxx.dd.tgz
 ```
