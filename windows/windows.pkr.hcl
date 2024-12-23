@@ -89,7 +89,7 @@ source "qemu" "windows_builder" {
   memory           = "4096"
   cpus             = "2"
   net_device       = "e1000"
-  qemuargs         = concat(local.baseargs, (var.use_tpm == "yes" ? local.tpmargs : []))
+  qemuargs         = concat(local.baseargs, (var.use_tpm == "yes" ? local.tpmargs : []),[["-display", "none"]])
   shutdown_timeout = "${var.timeout}"
   vnc_bind_address = "0.0.0.0"
 }
