@@ -179,6 +179,10 @@ and 11.
 
 ## Uploading images to MAAS
 
+```shell
+maas login admin http:/maas-ip:5240/MAAS/api/2.0/ 
+```
+
 Use MAAS CLI to upload the image:
 
 ```shell
