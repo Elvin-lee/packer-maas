@@ -197,3 +197,8 @@ maas admin boot-resources create \
     filetype='tgz' \
     content@=windows-xxx.dd.tgz
 ```
+### 参考
+https://github.com/canonical/packer-maas/tree/main/windows
+https://github.com/canonical/packer-maas/issues/252
+https://github.com/canonical/packer-maas/issues/278
+
