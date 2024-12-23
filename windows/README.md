@@ -186,10 +186,10 @@ maas login admin http:/maas-ip:5240/MAAS/api/2.0/
 Use MAAS CLI to upload the image:
 
 ```shell
-maas admin boot-resources create \
-    name='windows/windows-server' \
-    title='Windows Server' \
-    architecture='amd64/generic' \
-    filetype='ddtgz' \
-    content@=windows-server-amd64-root-dd.gz
+maas yourprofile boot-resources create
+name='windows/windows-server'
+title='Windows Server 2016'
+architecture='amd64/generic'
+filetype='ddtgz'
+content@=2016.dd.tar.gz
 ```
