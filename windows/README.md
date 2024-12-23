@@ -195,5 +195,5 @@ maas admin boot-resources create \
     title=' windows10pro'   \
     architecture='amd64/generic' \
     filetype='tgz' \
-    content@=windows-xxx.tar.gz
+    content@=windows-xxx.dd.tgz
 ```
