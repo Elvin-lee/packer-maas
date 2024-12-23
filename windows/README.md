@@ -136,3 +136,8 @@ maas admin boot-resources create \
     filetype='ddtgz' \
     content@=windows-server-amd64-root-dd.gz
 ```
+
+### 参考
+https://github.com/canonical/packer-maas/tree/main/windows
+https://github.com/canonical/packer-maas/issues/252
+https://github.com/canonical/packer-maas/issues/278
