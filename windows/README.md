@@ -3,6 +3,8 @@
 ## Introduction
 
 The Packer templates in this directory creates Windows Server images for use with MAAS.
+测试下来，发现ubuntu22.04版本对构建windwos镜像有部分未知为题，导致构建失败，最终选用24.04环境成功构建并适用maas。
+
 
 
 ## Prerequisites (to create the image)
@@ -57,6 +59,56 @@ You can obtains Microsoft Windows Evaluation ISO/VHDX images from the following 
 * [Windows 10 Enterprise](https://www.microsoft.com/en-us/evalcenter/download-windows-10-enterprise)
 * [Windows 11 Enterprise](https://www.microsoft.com/en-us/evalcenter/download-windows-11-enterprise)
 
+
+
+### 个人经验
+只需修改http/Autounattend.xml.ISO.template
+```shell
+1.修改安装版本
+<Value>@VERSION@</Value>
+#@VERSION@修改指定版本，如下选择：
+#windwos10/11：
+
+Windows 10/11 PRO  #专业版,这个版本用的最多
+Windows 10/11 Enterprise  #企业版，可选
+
+windows sever:
+Windows Server 2019/2022/2025 Datacenter（） #数据中心版本，功能最完善，建议选择
+Windows Server 2019/2022/2025 Standard（）   #标准版本功能比Datacenter比有限制
+
+2.修改key：
+示例：
+                <ProductKey>
+                    <Key>WX4NM-KYWYW-QJJR4-XV3QB-6VM33</Key>  #2022版本key
+                    <WillShowUI>Never</WillShowUI>
+                </ProductKey>
+多版本可用key：
+2022标准版：CR9K8-RDN9C-VD8FD-WK49B-KD97B
+2022数据版本：Q4N8P-8BV9D-8MR8W-3VY9F-CR7JH / WX4NM-KYWYW-QJJR4-XV3QB-6VM33
+2025标准版：TVRH6-WHNXV-R9WG3-9XRFY-MY832
+2025数据版本：D764K-2NDRG-47T6Q-P8T8W-YP6DF
+
+
+3.语言修改，选择性修改
+#两个组件<component></component>内修改语言：
+
+简体中文：zh-CN
+英文：en-US
+
+4.修改登录账户密码：（可不改）
+UserAccounts内修改：<Value>Passw0rd</Value>
+默认密码为，可修改统一密码：Passw0rd
+ 
+5.修改时区，默认时区是：UTC（选择性修改）
+可选修改为：CST
+      
+````
+
+### 建议修改Makefile：
+``` shell
+vim Makefile
+PACKER_LOG ?= 1 #输出构建详细日志，建议开启，默认是0不开启
+```
 
 ### Building the image
 
@@ -123,6 +175,7 @@ Path to Microsoft Windows VHDX image used to build the image.
 Specify the Microsoft Windows Version. Example inputs include: 2025, 2022, 2019, 2016, 10
 and 11.
 
+个人经验:
 
 ## Uploading images to MAAS
 
