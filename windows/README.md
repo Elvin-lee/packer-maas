@@ -195,7 +195,7 @@ maas admin boot-resources create \
     title=' windows10pro'   \
     architecture='amd64/generic' \
     filetype='tgz' \
-    content@=windows-xxx.dd.tgz
+    content@=/path/windows-xxx.dd.tar.tgz
 ```
 ### 参考
 https://github.com/canonical/packer-maas/tree/main/windows
